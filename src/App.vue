@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <md-toolbar class="md-accent">
+      <md-button class="md-icon-button" @click="showNavigation = true">
+        <md-icon>menu</md-icon>
+      </md-button>
+      <h3 class="md-title">Vee Validate Address Book App</h3>
+    </md-toolbar>
+    <md-drawer :md-active.sync="showNavigation" md-swipeable>
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">Vee Validate Address Book App</span>
+      </md-toolbar>
+      <md-list>
+        <md-list-item>
+          <router-link to="/">
+            <span class="md-list-item-text">Home</span>
+          </router-link>
+        </md-list-item>
+        <md-list-item>
+          <router-link to="/contact">
+            <span class="md-list-item-text">Add Contact</span>
+          </router-link>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
     <router-view />
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+export default {
+  name: "app",
+  data: () => {
+    return {
+      showNavigation: false
+    };
   }
+};
+</script>
+<style lang="scss">
+.center {
+  text-align: center;
 }
 </style>
